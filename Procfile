@@ -1,1 +1,1 @@
-web: node app.js
+web: vue app.js
