@@ -20,7 +20,7 @@ export default {
         GetCords(tilt){
     if(window.DeviceMotionEvent){    
             window.addEventListener('devicemotion', function (event) {
-            tilt.push([event.accelerationIncludingGravity.x, accelerationIncludingGravity.y, event.accelerationIncludingGravity.z]);
+            tilt.push([event.acceleration.x * 2, event.acceleration.y * 2,event.acceleration.z * 2]);
         }, true);
     }
     if(window.DeviceOrientationEvent){
