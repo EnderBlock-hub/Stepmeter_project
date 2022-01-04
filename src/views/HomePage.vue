@@ -19,7 +19,7 @@ export default {
     methods:{
         GetCords(tilt){
         window.addEventListener('devicemotion', function (event) {
-        tilt.push([event.acceleration.x * 2, event.acceleration.y * 2]);
+        tilt.push([event.acceleration.x * 2, event.acceleration.y * 2,event.acceleration.z * 2]);
     }, true);
         }
     }
