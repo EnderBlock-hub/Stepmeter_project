@@ -2,7 +2,8 @@
     <div>
         Home
         <a href="/steps">Шаги</a>
-        {{tilt}}
+        <div class="motion">{{motion}}</div>
+        <div class="orientation">{{orientation}}</div>
     </div>
 </template>
 
@@ -10,22 +11,23 @@
 export default {
     data(){
         return{
-            tilt: []
+            motion: [],
+            orientation:[]
         }
     },
     mounted() {
-        this.GetCords(this.tilt)
+        this.GetCords(this.motion,this.orientation)
     },
     methods:{
-        GetCords(tilt){
+        GetCords(motion,orientation){
     if(window.DeviceMotionEvent){    
             window.addEventListener('devicemotion', function (event) {
-            tilt.push([event.acceleration.x * 2, event.acceleration.y * 2,event.acceleration.z * 2]);
+            motion.push([event.acceleration.x * 2, event.acceleration.y * 2,event.acceleration.z * 2]);
         }, true);
     }
     if(window.DeviceOrientationEvent){
         window.addEventListener("deviceorientation", function(event){
-            tilt.push([event.alpha, event.beta, event.gamma]);
+            orientation.push([event.alpha, event.beta, event.gamma]);
         }, false);
     }
         }
@@ -34,5 +36,10 @@ export default {
 </script>
 
 <style scoped>
-
+.motion{
+    color: red;
+}
+.orientation{
+    color: green;
+}
 </style>
